@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!--
+We converted and using All the provided dimension in Pixel to DP by using reference of 440 DPI Density Device
+-->
+<resources>
+    <dimen name="page_start_padding">10dp</dimen>
+    <dimen name="list_view_top_margin">48dp</dimen>
+    <dimen name="title_margin_start">12dp</dimen>
+    <dimen name="show_title_text_size">20sp</dimen>
+    <dimen name="show_name_text_size">15sp</dimen>
+    <dimen name="show_name_text_top_margin">8dp</dimen>
+
+
+</resources>

@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Movies</string>
+    <string name="show_search_hint">Type shows here</string>
 </resources>
