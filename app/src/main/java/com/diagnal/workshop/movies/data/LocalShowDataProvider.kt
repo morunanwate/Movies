@@ -5,9 +5,10 @@ import com.diagnal.workshop.movies.data.model.Show
 import com.diagnal.workshop.movies.utils.AppConstant
 import com.google.gson.Gson
 import java.io.InputStream
+import javax.inject.Inject
 
 
-class LocalShowDataProvider (private val context: Context): ShowDataProvider {
+class LocalShowDataProvider  @Inject constructor(private val context: Context): ShowDataProvider {
 
     override fun getShows(pageNum: Int): Show? {
         val stream: InputStream = when (pageNum) {
