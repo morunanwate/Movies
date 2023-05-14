@@ -1,10 +1,12 @@
 package com.diagnal.workshop.movies.showlist
 
+import android.content.Context
 import android.content.res.Configuration
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
 import android.view.View
+import android.view.inputmethod.InputMethodManager
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isVisible
@@ -99,6 +101,7 @@ class ShowListActivity : AppCompatActivity() {
         binding.toolbar.titleTV.visibility = View.VISIBLE
 
         binding.toolbar.searchButtonIV.setImageResource(R.drawable.ic_search)
+        hideSoftKeyboard(this@ShowListActivity, binding.toolbar.searchET)
     }
 
     private fun showSearchUI(binding: ActivityShowListBinding) {
@@ -107,8 +110,9 @@ class ShowListActivity : AppCompatActivity() {
         binding.toolbar.backArrowIV.visibility = View.GONE
         binding.toolbar.titleTV.visibility = View.GONE
 
+        binding.toolbar.searchET.requestFocus()
         binding.toolbar.searchButtonIV.setImageResource(R.drawable.ic_search_cancel)
-
+        showSoftKeyboard(this@ShowListActivity, binding.toolbar.searchET)
     }
 
 }
@@ -157,6 +161,18 @@ private fun ActivityShowListBinding.bindSearching(
                 onSearchAction(UiAction.TypingSearchText(s?.toString() ?: ""))
         }
     })
+}
 
+fun hideSoftKeyboard(context: Context, focusedView: View?) {
+    focusedView?.let { view ->
+        val imm = context.getSystemService(Context.INPUT_METHOD_SERVICE) as? InputMethodManager
+        imm?.hideSoftInputFromWindow(view.windowToken, 0)
+    }
+}
 
+fun showSoftKeyboard(context: Context, focusedView: View?) {
+    focusedView?.let { view ->
+        val imm = context.getSystemService(Context.INPUT_METHOD_SERVICE) as? InputMethodManager
+        imm?.showSoftInput(focusedView, 0)
+    }
 }
